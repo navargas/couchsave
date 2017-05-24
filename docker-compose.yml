@@ -1,0 +1,8 @@
+database:
+    image: couchdb
+    volumes:
+        - /couchsave/:/usr/local/var/lib/couchdb
+interface:
+    build: ./interface
+    links:
+        - database
