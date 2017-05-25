@@ -4,5 +4,9 @@ database:
         - /couchsave/:/usr/local/var/lib/couchdb
 interface:
     build: ./interface
+    ports:
+        - 5050:5050
+    environment:
+        - PORT=5050
     links:
         - database
