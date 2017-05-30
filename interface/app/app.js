@@ -6,17 +6,7 @@ var c = new(cradle.Connection)('http://database', 5984, {
     raw: false,
     forceSave: true,
 });
-/*db.save({
-    query: 'abc',
-    args: [1,2,3]
-}, function(err, res) {
-    console.log(err, res);
-    db.view('result/getResult', {key:['abc',[1,2,3]]},
-        function (err, doc) {
-            console.log('abc', err, doc);
-        }
-    );
-});*/
+
 var resultQueryView = `
     function(doc){
         if(doc.query && doc.args)
