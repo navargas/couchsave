@@ -1,6 +1,7 @@
 require('dotenv').config()
 var fmt = require('util').format;
-var ibmdb = require('ibm_db');
+var Pool = require('ibm_db').Pool;
+var ibmdb = new Pool();
 
 module.exports.run = (query, args, cb) => {
     ibmdb.open(process.env.constr, (err, db) => {
@@ -11,8 +12,8 @@ module.exports.run = (query, args, cb) => {
                 if (err) return cb(err);
                 result.fetchAll((err, rows) => {
                     // result.close not defined
-                    stmt.closeSync();
                     result.closeSync();
+                    stmt.closeSync();
                     if (err) return cb(err);
                     db.close();
                     cb(null, rows);
