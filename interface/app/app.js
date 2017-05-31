@@ -34,7 +34,8 @@ db.exists(function (err, exists) {
 var app = express();
 
 var modules = {
-    db2: require('./modules/db2.js')    
+    munich: require('./modules/db2.js'),
+    db2: require('./modules/db2.js')
 }
 
 process.on('uncaughtException', function (err) {
